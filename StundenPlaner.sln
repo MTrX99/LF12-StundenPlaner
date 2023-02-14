@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StundenPlaner", "StundenPlaner\StundenPlaner.csproj", "{D2E2A30A-E8FC-4F4B-99D7-F191F3762EB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StundenPlaner", "StundenPlaner\StundenPlaner.csproj", "{D2E2A30A-E8FC-4F4B-99D7-F191F3762EB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StundenPlanerDB", "StundenPlanerDB\StundenPlanerDB.csproj", "{34B4B349-F4B2-4831-AB0F-CB7B51C8F219}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D2E2A30A-E8FC-4F4B-99D7-F191F3762EB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2E2A30A-E8FC-4F4B-99D7-F191F3762EB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2E2A30A-E8FC-4F4B-99D7-F191F3762EB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34B4B349-F4B2-4831-AB0F-CB7B51C8F219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B4B349-F4B2-4831-AB0F-CB7B51C8F219}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B4B349-F4B2-4831-AB0F-CB7B51C8F219}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B4B349-F4B2-4831-AB0F-CB7B51C8F219}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
