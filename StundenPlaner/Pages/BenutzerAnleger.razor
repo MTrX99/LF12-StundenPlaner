@@ -5,7 +5,7 @@
 
 <body>
     <h1>Student Information Form</h1>
-    <form method="post">
+ 
         <div>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" @bind="model.Name" required>
@@ -19,9 +19,8 @@
             <input type="text" id="class" name="class" @bind="model.KlasseID" required>
         </div>
         <button type="submit" @onclick="model.legeEnität">Submit</button>
-        <button onclick=""> hole die infos </button>
-    </form>
-    <div>
+        <button @onclick="model.holeDieInfos"> hole die infos </button>
+       <div>
         <label for="class">Class:</label>
         <input type="text" @bind="model.infos" required>
     </div>

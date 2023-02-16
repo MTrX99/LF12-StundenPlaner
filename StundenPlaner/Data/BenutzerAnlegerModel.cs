@@ -17,7 +17,7 @@ namespace StundenPlaner.Data
             {
                 //if (LehrerOderSchüler) // false=>Lehrer true=> Schüler
                 //{
-                    var schüler = new Schüler { Name= Name, KlasseId= KlasseID };
+                    var schüler = new Schüler { Name= Name };
                     context.Schüler.Add(schüler);
                     context.SaveChanges();
                 //}
@@ -29,7 +29,7 @@ namespace StundenPlaner.Data
             {
                 foreach (var item in context.Schüler)
                 {
-                    infos += item.ToString();
+                    infos += item.Name;
                 }
             }
         }
