@@ -18,6 +18,12 @@ namespace StundenPlanerDB.Models
         {
         }
 
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=MainDB;Trusted_Connection=True;AttachDbFilename=C:\\Code\\Source\\Repos\\MTrX99\\LF12-StundenPlaner\\StundenPlanerDB\\MainDB.mdf;");
+   
+
+
         public virtual DbSet<Klasse> Klasse { get; set; }
         public virtual DbSet<Lehrer> Lehrer { get; set; }
         public virtual DbSet<Schulfach> Schulfach { get; set; }
@@ -74,7 +80,7 @@ namespace StundenPlanerDB.Models
 
             modelBuilder.Entity<Schüler>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e=> e.Id);
 
                 entity.Property(e => e.Id)
                     .ValueGeneratedOnAdd()

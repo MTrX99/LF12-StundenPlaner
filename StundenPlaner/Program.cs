@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.EntityFrameworkCore;
 using StundenPlaner.Data;
+using StundenPlanerDB.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
-
+builder.Services.AddDbContext<SP_Context>(options => options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=MainDB;Trusted_Connection=True;AttachDbFilename=C:\\Code\\Source\\Repos\\MTrX99\\LF12-StundenPlaner\\StundenPlanerDB\\MainDB.mdf;"), ServiceLifetime.Scoped);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
