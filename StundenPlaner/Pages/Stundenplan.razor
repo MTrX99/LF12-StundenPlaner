@@ -1,0 +1,31 @@
+﻿<h1>Stundenplan</h1>
+
+@page "/stundenPlan"
+@using StundenPlaner.Data
+
+<h1>Stundenplan</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Tag</th>
+            <th>Stunde</th>
+            <th>Fach</th>
+            <th>Lehrer</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tag in Model.Wochenplan)
+        {
+            <tr>
+                <td>@tag.Tag</td>
+                <td>@tag.Stunde</td>
+                <td>@tag.Fach</td>
+                <td>@tag.Lehrer</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@code {
+    StundenplansModel Model = new ();
+}
