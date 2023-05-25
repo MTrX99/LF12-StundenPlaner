@@ -16,6 +16,7 @@ namespace StundenPlanerDB.Models
         public SP_Context(DbContextOptions<SP_Context> options)
             : base(options)
         {
+
         }
 
         public virtual DbSet<Klasse> Klasse { get; set; }

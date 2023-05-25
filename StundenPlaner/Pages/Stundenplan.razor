@@ -8,24 +8,38 @@
 <table>
     <thead>
         <tr>
-            <th>Tag</th>
-            <th>Stunde</th>
-            <th>Fach</th>
+            <th>Wochentag</th>
+            <th>Schulfach</th>
             <th>Lehrer</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var tag in Model.Wochenplan)
+        @foreach (var wochenplanItem in model.Wochenplan)
         {
             <tr>
-                <td>@tag.Tag</td>
-                <td>@tag.Stunde</td>
-                <td>@tag.Fach</td>
-                <td>@tag.Lehrer</td>
+                <td>@wochenplanItem.Tag</td>
+                <td>
+                    @foreach (var stunde in wochenplanItem.Stunden)
+                    {
+                        <p>@stunde.Fach</p>
+                    }
+                </td>
+                <td>
+                    @foreach (var stunde in wochenplanItem.Stunden)
+                    {
+                        <p>@stunde.Lehrer</p>
+                    }
+                </td>
             </tr>
         }
     </tbody>
 </table>
 @code {
-    StundenplansModel Model = new ();
+    StundenplansModel model;
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        model = new();
+        model.ladeStunden();
+    }
 }

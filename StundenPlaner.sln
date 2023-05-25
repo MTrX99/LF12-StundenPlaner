@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StundenPlaner", "StundenPlaner\StundenPlaner.csproj", "{D2E2A30A-E8FC-4F4B-99D7-F191F3762EB1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{34B4B349-F4B2-4831-AB0F-CB7B51C8F219} = {34B4B349-F4B2-4831-AB0F-CB7B51C8F219}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StundenPlanerDB", "StundenPlanerDB\StundenPlanerDB.csproj", "{34B4B349-F4B2-4831-AB0F-CB7B51C8F219}"
 EndProject

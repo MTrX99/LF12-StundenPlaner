@@ -1,13 +1,23 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using StundenPlaner.Data;
+using StundenPlanerDB.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+
+string path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+
+builder.Services.AddDbContext<SP_Context>(options =>
+      options.UseSqlServer($"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename= {path}\\MTrX99\\LF12-StundenPlaner\\StundenPlanerDB\\MainDB.mdf;Integrated Security=True"));
+
+
 
 var app = builder.Build();
 
