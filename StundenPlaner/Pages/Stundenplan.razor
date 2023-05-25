@@ -7,31 +7,40 @@
 <h1>Stundenplan</h1>
 
 
-<table class="table">
+
+<table class="styled-table">
     <thead>
         <tr>
-            <th>Wochentag</th>
-            <th>Schulfach</th>
-            <th>Lehrer</th>
+            <th></th>
+            @foreach (var wochenplanItem in model.Wochenplan)
+            {
+                <th style="text-align:center">@wochenplanItem.Tag</th>
+            }
         </tr>
     </thead>
     <tbody>
-        @foreach (var wochenplanItem in model.Wochenplan)
+        @for (int i = 0; i < 6; i++)
         {
             <tr>
-                <td>@wochenplanItem.Tag</td>
-                <td>
-                    @foreach (var stunde in wochenplanItem.Stunden)
-                    {
-                        <p>@stunde.Fach</p>
-                    }
-                </td>
-                <td>
-                    @foreach (var stunde in wochenplanItem.Stunden)
-                    {
-                        <p>@stunde.Lehrer</p>
-                    }
-                </td>
+                <td>@(i + 1)</td>
+                @foreach (var wochenplanItem in model.Wochenplan)
+                {
+                    <td>
+                        @if (wochenplanItem.Stunden.Count > i)
+                        {
+
+                            int x = random.Next(1, 6);
+                            if (x == y)
+                            {         
+                            x = random.Next(1, 6);
+                            }
+                            var stunde = wochenplanItem.Stunden[x];
+                            y = x;
+                            <p style="text-align:left">@stunde.Fach</p>
+                            <p style="text-align:right">@stunde.Lehrer</p>
+                        }
+                    </td>
+                }
             </tr>
         }
     </tbody>
@@ -39,6 +48,8 @@
 
 @code {
     StundenplansModel model;
+    Random random = new Random();
+    int y; 
     protected override void OnInitialized()
     {
         base.OnInitialized();

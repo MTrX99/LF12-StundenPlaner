@@ -62,3 +62,58 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0 50px 0px;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    max-width: 95vw;
+    max-height: 30vw;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+    .styled-table table {
+        width: 95vw;
+        overflow: auto;
+    }
+
+    .styled-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+        position: sticky;
+        z-index: 100;
+        top: 0;
+    }
+
+    .styled-table th {
+        padding: 12px 15px;
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .styled-table td {
+        padding: 12px 15px;
+        border-right: 1px solid #dddddd;
+        border-bottom: 1px solid #009879;
+    }
+
+    .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        .styled-table tbody tr.active-row {
+            font-weight: bold;
+            color: #009879;
+        }

@@ -12,10 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
-string path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+string path = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
 
 builder.Services.AddDbContext<SP_Context>(options =>
-      options.UseSqlServer($"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename= {path}\\MTrX99\\LF12-StundenPlaner\\StundenPlanerDB\\MainDB.mdf;Integrated Security=True"));
+      options.UseSqlServer($"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename= {path}\\LF12-StundenPlaner\\StundenPlanerDB\\MainDB.mdf;Integrated Security=True"));
 
 
 

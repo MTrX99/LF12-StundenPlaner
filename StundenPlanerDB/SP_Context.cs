@@ -16,6 +16,7 @@ namespace StundenPlanerDB.Models
         {
         }
 
+        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Klasse> Klasse { get; set; }
         public virtual DbSet<Lehrer> Lehrer { get; set; }
         public virtual DbSet<Schulfach> Schulfach { get; set; }
@@ -88,6 +89,16 @@ namespace StundenPlanerDB.Models
                     .WithMany()
                     .HasForeignKey(d => d.KlasseId)
                     .HasConstraintName("FK__Schüler__KlasseI__3C69FB99");
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.ToTable("User");
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.UserName);
+                entity.Property(e => e.HashedPassword);
+                
             });
 
             OnModelCreatingPartial(modelBuilder);

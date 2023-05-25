@@ -1,0 +1,27 @@
+﻿@page "/registrierung"
+@using StundenPlaner.Data
+@using StundenPlanerDB.Models
+@inject SP_Context Context
+
+    <p>Willkommen</p>
+
+<form method="post" @onsubmit="Model.Registrieren">
+
+
+    <label for="username">Benutzername:</label>
+    <input type="text" id="username" name="username" @bind="@Model.Benutzername" />
+
+    <label for="password">Passwort:</label>
+    <input type="password" id="password" name="password" @bind="@Model.Passwort" />
+
+    <button type="submit">Anmelden</button>
+</form>
+
+@code {
+    RegistrierungsModel Model;
+     protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Model = new(Context);
+    }
+}

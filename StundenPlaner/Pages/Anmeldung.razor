@@ -1,18 +1,27 @@
 ﻿
 @page "/Anmeldung"
 @using StundenPlaner.Data
+@using StundenPlanerDB.Models
+@inject SP_Context Context
+@inject NavigationManager Navigation
 
 
-<form method="post">
+<form method="post" @onsubmit="Model.Anmelden">
     <label for="username">Benutzername:</label>
-    <input type="text" id="username" name="username" />
+    <input type="text" id="username" name="username" @bind="@Model.Benutzername" />
 
     <label for="password">Passwort:</label>
-    <input type="password" id="password" name="password" />
+    <input type="password" id="password" name="password" @bind="@Model.Passwort" />
 
     <button type="submit">Anmelden</button>
 </form>
 
 @code {
-    AnmeldungsModel Model = new ();
+    AnmeldungsModel Model;
+
+     protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Model = new(Context,Navigation);
+    }
 }
