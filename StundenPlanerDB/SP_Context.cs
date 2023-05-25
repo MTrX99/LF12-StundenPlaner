@@ -9,14 +9,11 @@ namespace StundenPlanerDB.Models
 {
     public partial class SP_Context : DbContext
     {
-        public SP_Context()
-        {
-        }
+
 
         public SP_Context(DbContextOptions<SP_Context> options)
-            : base(options)
+       : base(options)
         {
-
         }
 
         public virtual DbSet<Klasse> Klasse { get; set; }

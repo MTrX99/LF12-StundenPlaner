@@ -8,6 +8,11 @@
     public class StundenplansModel
     {
         public List<TagInfo>? Wochenplan { get; set; }
+        public SP_Context context { get; set; }
+        public StundenplansModel(SP_Context sP_Context)
+        {
+            context = sP_Context;
+        }
 
         public void ladeStunden()
         {
@@ -15,7 +20,7 @@
 
             CultureInfo germanCulture = new CultureInfo("de-DE");
             List<Stunde>? Stunden = new();
-            var context = new SP_Context();
+            
             using (context)
             {
                 var DBstunden = (from l in context.Lehrer
