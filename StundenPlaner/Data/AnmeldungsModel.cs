@@ -10,7 +10,7 @@ namespace StundenPlaner.Data
         public string Passwort { get; set; }
         private readonly NavigationManager _navigationManager;
 
-
+        public string Error { get; set; }
 
         public AnmeldungsModel(SP_Context Context, NavigationManager navigationManager)
         {
@@ -20,18 +20,28 @@ namespace StundenPlaner.Data
 
         public void Anmelden()
         {
-
-            string hashedpassword = context.Users.Where(u => u.UserName == Benutzername).Select(u=> u.HashedPassword).Single();
-            PasswordHasher hasher = new PasswordHasher();
-            bool passwordMatch = hasher.VerifyPassword(Passwort, hashedpassword);
-
-            if (passwordMatch)
+            if (!string.IsNullOrEmpty(Benutzername) || !string.IsNullOrEmpty(Passwort))
             {
-                _navigationManager.NavigateTo("/stundenplan");
-            }
-            else
-            {
-                
+                string? hashedpassword = context.Users.Where(u => u.UserName == Benutzername).Select(u => u.HashedPassword).SingleOrDefault();
+                if (hashedpassword != null)
+                {
+
+                PasswordHasher hasher = new PasswordHasher();
+                bool passwordMatch = hasher.VerifyPassword(Passwort, hashedpassword);
+
+                if (passwordMatch)
+                {
+                    _navigationManager.NavigateTo("/stundenplan");
+                }
+                    else
+                    {
+                        Error = "Benutzername oder Passwort ist falsch";
+                    }
+                }
+                else
+                {
+                    Error = "Benutzername oder Passwort ist falsch";
+                }
             }
         }
     }

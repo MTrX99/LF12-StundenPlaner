@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
@@ -15,9 +16,15 @@ builder.Services.AddServerSideBlazor();
 string path = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
 
 builder.Services.AddDbContext<SP_Context>(options =>
-      options.UseSqlServer($"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename= {path}\\LF12-StundenPlaner\\StundenPlanerDB\\MainDB.mdf;Integrated Security=True"));
+      options.UseSqlServer($"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename= {path}\\LF12-StundenPlaner\\StundenPlanerDB\\MainDB.mdf;Integrated Security=True"), ServiceLifetime.Transient);
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options =>
+        {
+            options.LoginPath = new PathString("/anmeldung");
+        });
 
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -32,6 +39,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseRouting();
 

@@ -2,19 +2,27 @@
 @using StundenPlaner.Data
 @using StundenPlanerDB.Models
 @inject SP_Context Context
+@inject NavigationManager Navigation
 
-    <p>Willkommen</p>
-
-<form method="post" @onsubmit="Model.Registrieren">
+      <h1 style="margin-bottom:100px;font-family:Verdana;color:#009879">Willkommen beim Stundenplaner</h1>
 
 
-    <label for="username">Benutzername:</label>
-    <input type="text" id="username" name="username" @bind="@Model.Benutzername" />
 
-    <label for="password">Passwort:</label>
-    <input type="password" id="password" name="password" @bind="@Model.Passwort" />
 
-    <button type="submit">Anmelden</button>
+<form method="post" @onsubmit="Model.Registrieren" class="form-container">
+    <div class="form-group">
+        <label for="username">Benutzername:</label>
+        <input type="text" id="username" name="username" @bind="@Model.Benutzername" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Passwort:</label>
+        <input type="password" id="password" name="password" @bind="@Model.Passwort" />
+    </div>
+
+    <button type="submit" class="submit-button">Konto erstellen</button>
+
+    <p style="color:red">@Model.Error</p>
 </form>
 
 @code {
@@ -22,6 +30,6 @@
      protected override void OnInitialized()
     {
         base.OnInitialized();
-        Model = new(Context);
+          Model = new(Context,Navigation);
     }
 }

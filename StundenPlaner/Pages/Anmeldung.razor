@@ -6,14 +6,26 @@
 @inject NavigationManager Navigation
 
 
-<form method="post" @onsubmit="Model.Anmelden">
-    <label for="username">Benutzername:</label>
-    <input type="text" id="username" name="username" @bind="@Model.Benutzername" />
+<form method="post" @onsubmit="Model.Anmelden" class="form-container">
+    <h2 style="margin-bottom:100px;font-family:Verdana;color:#009879">Stundenplaner</h2>
 
-    <label for="password">Passwort:</label>
-    <input type="password" id="password" name="password" @bind="@Model.Passwort" />
+    <div class="form-group">
+        <label for="username">Benutzername:</label>
+        <input type="text" id="username" name="username" class="form-control" @bind="@Model.Benutzername" />
+    </div>
 
+    <div class="form-group">
+        <label for="password">Passwort:</label>
+        <input type="password" id="password" name="password" class="form-control" @bind="@Model.Passwort" />
+    </div>
+
+<p style="color:red">@Model.Error</p>
     <button type="submit">Anmelden</button>
+
+    <div class="register-link">
+        <p>Noch kein Konto?</p>
+        <a href="/registrierung">Registrieren</a>
+    </div>
 </form>
 
 @code {

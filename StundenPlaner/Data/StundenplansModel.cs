@@ -1,6 +1,7 @@
 ﻿namespace StundenPlaner.Data
 {
     using Azure;
+    using Microsoft.AspNetCore.Components;
     using StundenPlanerDB.Models;
     using System.Collections.Generic;
     using System.Globalization;
@@ -9,11 +10,17 @@
     {
         public List<TagInfo>? Wochenplan { get; set; }
         public SP_Context context { get; set; }
-        public StundenplansModel(SP_Context sP_Context)
+        private readonly NavigationManager _navigationManager;
+        public StundenplansModel(SP_Context sP_Context, NavigationManager navigationManager)
         {
             context = sP_Context;
+            _navigationManager = navigationManager;
         }
 
+        public void Abmelden()
+        {
+            _navigationManager.NavigateTo("/anmeldung");
+        }
         public void ladeStunden()
         {
             DayOfWeek[] werktagen = { DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday };

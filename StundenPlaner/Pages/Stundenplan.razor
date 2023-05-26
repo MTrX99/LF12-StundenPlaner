@@ -1,50 +1,56 @@
 ﻿
+@attribute [Authorize]
 @page "/stundenPlan"
 @using StundenPlaner.Data
 @using StundenPlanerDB.Models
 @inject SP_Context Context
-
+@inject NavigationManager Navigation
 <h1>Stundenplan</h1>
 
 
 
-<table class="styled-table">
-    <thead>
-        <tr>
-            <th></th>
-            @foreach (var wochenplanItem in model.Wochenplan)
-            {
-                <th style="text-align:center">@wochenplanItem.Tag</th>
-            }
-        </tr>
-    </thead>
-    <tbody>
-        @for (int i = 0; i < 6; i++)
-        {
+<div class="center-container">
+    <table class="styled-table">
+        <thead>
             <tr>
-                <td>@(i + 1)</td>
+                <th></th>
                 @foreach (var wochenplanItem in model.Wochenplan)
                 {
-                    <td>
-                        @if (wochenplanItem.Stunden.Count > i)
-                        {
-
-                            int x = random.Next(1, 6);
-                            if (x == y)
-                            {         
-                            x = random.Next(1, 6);
-                            }
-                            var stunde = wochenplanItem.Stunden[x];
-                            y = x;
-                            <p style="text-align:left">@stunde.Fach</p>
-                            <p style="text-align:right">@stunde.Lehrer</p>
-                        }
-                    </td>
+                    <th style="text-align:center">@wochenplanItem.Tag</th>
                 }
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < 6; i++)
+            {
+                <tr>
+                    <td>@(i + 1)</td>
+                    @foreach (var wochenplanItem in model.Wochenplan)
+                    {
+                        <td>
+                            @if (wochenplanItem.Stunden.Count > i)
+                            {
+                                int x = random.Next(1, 6);
+                                if (x == y)
+                                {         
+                                    x = random.Next(1, 6);
+                                }
+                                var stunde = wochenplanItem.Stunden[x];
+                                y = x;
+                                <p style="text-align:left">@stunde.Fach</p>
+                                <p style="text-align:right">@stunde.Lehrer</p>
+                            }
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+<button @onclick="model.Abmelden">Abmelden</button>
 
 @code {
     StundenplansModel model;
@@ -53,7 +59,7 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        model = new(Context);
+        model = new(Context,Navigation);
         model.ladeStunden();
     }
 }

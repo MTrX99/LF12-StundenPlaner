@@ -117,3 +117,62 @@ a, .btn-link {
             font-weight: bold;
             color: #009879;
         }
+
+
+.center-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #009879;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+}
+
+.register-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+    .register-link p {
+        margin-bottom: 5px;
+    }
+
+    .register-link a {
+        color: #009879;
+        text-decoration: none;
+    }
